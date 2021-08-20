@@ -23,3 +23,116 @@ function lesson1() {
     async - кто загрузится первым, тот и сработает
     defer - как расположены в документе */
 }
+
+function lesson2() {
+    /* less 1 */
+    console.log("lesson 1");
+   
+    var a = 1, b = 1, c, d;
+    /* 
+    ++a - префикс-инкремент, сначала увеличили потом использовали
+    a++ - пост-инкремент, сначала использовали потом увеличили
+     */
+    c = ++a; console.log(c);           // 2   a=2 c=2
+    d = b++; console.log(d);           // 1   d=1 b=2
+    c = (2+ ++a); console.log(c);      // 5   c=5 a=3
+    d = (2+ b++); console.log(d);      // 4   d=4 b=3
+    console.log(a);                    // 3   a=3
+    console.log(b);                    // 3   b=3
+ 
+    /* less 2 */
+    console.log("lesson 2");
+  
+    var a2 = 2;
+    var x = 1 + (a2 *= 2);   // x = 5, 1 + (2*2)
+    console.log(x);
+
+    /* less 3 */
+    console.log("lesson 3");
+   
+    let a3 = 10;
+    let b3 = 20;
+    if ((a3 >= 0 ) && (b3 >= 0)) {
+        console.log(a3-b3);
+    }
+    else if ((a3 < 0 ) && (b3 < 0)) {
+        console.log(a3*b3);
+    }
+    else {
+        console.log(a3+b3);
+    }
+ 
+    /* less 4 */
+    console.log("lesson 4");
+  
+    let a4 = 7;
+    switch(a4) {
+        case 1: console.log(a4++); 
+        case 2: console.log(a4++);
+        case 3: console.log(a4++); 
+        case 4: console.log(a4++); 
+        case 5: console.log(a4++); 
+        case 6: console.log(a4++); 
+        case 7: console.log(a4++); 
+        case 8: console.log(a4++); 
+        case 9: console.log(a4++); 
+        case 10: console.log(a4++); 
+        case 11: console.log(a4++); 
+        case 12: console.log(a4++); 
+        case 13: console.log(a4++); 
+        case 14: console.log(a4++); 
+        case 15: console.log(a4); 
+    }
+
+    /* less 5 */
+    console.log("lesson 5");
+    
+    function addition(a, b) {
+        return(a+b);
+    }
+
+    function subtraction(a, b) {
+        return(a-b);
+    }
+
+    function multiplication(a, b) {
+        return(a*b);
+    }
+
+    function division(a, b) {
+        return(a/b);
+    }
+
+    /* less 6 */
+    console.log("lesson 6");
+    
+    function mathOperation(arg1, arg2, operation) {
+        switch(operation) {
+            case "add": console.log(addition(arg1, arg2)); break;
+            case "sub": console.log(subtraction(arg1, arg2)); break;
+            case "mul": console.log(multiplication(arg1, arg2)); break;
+            case "div": console.log(division(arg1, arg2)); break;
+        }
+    }
+    mathOperation(10, 20, "sub");
+
+    /* less 7 */
+    console.log("lesson 7");
+   
+    console.log(null == 0); //false
+    console.log(null > 0); //false
+    console.log(null < 0); //false
+    console.log(null >= 0); //true
+    /* С точки зрения математики, если у нас есть два числа, x и y, и если x не меньше, чем y, тогда x должно быть больше чем y или равно ему. */
+
+    /* less 8 */
+    console.log("lesson 8");
+    
+    function power(val, pow) {
+        if (pow !== 1) {
+            return val * power(val, pow-1);
+        }
+        return val;
+    }
+    console.log(power(3, 3));
+}
