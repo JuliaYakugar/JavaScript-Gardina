@@ -136,3 +136,55 @@ function lesson2() {
     }
     console.log(power(3, 3));
 }
+
+function lesson3() {
+    /* less 1 */
+    console.log("lesson 1");
+    let i3 = 2;
+    while (i3 < 100) {
+        if (primeNumbers(i3)) {
+            console.log(i3);
+        }
+        i3++;
+    }
+    function primeNumbers (num) {
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /* less 2 */
+    console.log("lesson 2");
+    let basket = [
+        ['Товар 1', 1000],
+        ['Товар 2', 2000],
+    ];
+    function priceBasket (basket) {
+        let priceAll = 0;
+        for (let i=0; i < basket.length; i++) {
+            priceAll += basket[i][1];
+        }
+        return priceAll;
+    }
+    console.log('Цена корзины: ' + priceBasket(basket));
+
+    /* less 3 */
+    console.log("lesson 3");
+    for (let i = 0; i <= 9; console.log(i++)) {
+ 
+    }
+
+    /* less 4 */
+    console.log("lesson 4");
+    for (let i = 1; i <= 20; i++) {
+        let x = '';
+        for (let y = 1; y <= i; y++) {
+            x += 'x';
+        }
+    console.log(x);    
+    }
+
+}
