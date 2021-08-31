@@ -108,13 +108,13 @@ function lesson2() {
     
     function mathOperation(arg1, arg2, operation) {
         switch(operation) {
-            case "add": console.log(addition(arg1, arg2)); break;
-            case "sub": console.log(subtraction(arg1, arg2)); break;
-            case "mul": console.log(multiplication(arg1, arg2)); break;
-            case "div": console.log(division(arg1, arg2)); break;
+            case "add": return addition(arg1, arg2);
+            case "sub": return subtraction(arg1, arg2);
+            case "mul": return multiplication(arg1, arg2);
+            case "div": return division(arg1, arg2);
         }
     }
-    mathOperation(10, 20, "sub");
+    console.log(mathOperation(10, 20, "sub"));
 
     /* less 7 */
     console.log("lesson 7");
@@ -186,5 +186,55 @@ function lesson3() {
         }
     console.log(x);    
     }
+
+}
+
+function lesson4() {
+    /* less 1 */
+    console.log("lesson 1");
+
+    let x=58;
+    function ObjNumbers (num) {
+	    let obj = {};
+	    if ((num < 0) || (num > 999)) {
+		    console.log('Число не из диапазона 0 - 999');
+		    return obj;
+        } else {
+	        let mas = num.toString().split(''); 
+	        while (mas.length < 3) {
+		        mas.unshift(0);
+            }
+	        obj = {
+                'единицы': mas[mas.length-1],
+                'десятки':  mas[mas.length-2],
+                'сотни':  mas[mas.length-3],
+            }
+            return obj;
+        }
+    }
+    console.log(ObjNumbers(x));
+
+    /* less 2 */
+    console.log("lesson 2");
+    let basketObj = {
+        items: [
+            {
+                id_item: 1,
+                name_item: "Товар 1",
+                price_item: 1000,
+            },
+            {
+                id_item: 2,
+                name_item: "Товар 2",
+                price_item: 2000,
+            }
+        ],
+        priceBasketObj() {
+            return this.items.reduce(
+                (sum, elem) => sum + elem.price_item, 0
+            );
+        }
+    }
+    console.log('Цена корзины: ' + basketObj.priceBasketObj());
 
 }
