@@ -324,3 +324,8 @@ function lesson5() {
     
     item.links();
 }
+
+function lesson6() {
+    /* Не успела сделать */
+
+}
