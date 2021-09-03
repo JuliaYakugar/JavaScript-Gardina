@@ -238,3 +238,89 @@ function lesson4() {
     console.log('Цена корзины: ' + basketObj.priceBasketObj());
 
 }
+
+function lesson5() {
+    /* less 1 */
+    let chess = document.createElement('table');
+    chess.setAttribute('id', 'chess');
+    main.appendChild(chess);	
+    
+    const сhessBoard = {
+        chessEl: document.getElementById('chess'),
+
+        playingField() {
+            const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+            const numbers = ['8', '7', '6', '5', '4', '3', '2', '1'];
+
+            for (let numbersI = -1; numbersI <= numbers.length; numbersI++) {
+                const tr = document.createElement('tr');
+                this.chessEl.appendChild(tr);
+                for (let lettersI = -1; lettersI <= letters.length; lettersI++) {
+                    const td = document.createElement('td');
+                    tr.appendChild(td);
+                    if (((numbersI < 0) && (lettersI < 0)) || ((numbersI > 7) && (lettersI < 0)) || ((numbersI < 0) && (lettersI > 7)) || ((numbersI > 7) && (lettersI > 7))) {
+                        td.innerHTML = '';
+                    } else if ((numbersI < 0) || (numbersI > 7)) {
+                        td.innerHTML = letters[lettersI];
+                    } else if ((lettersI < 0) || (lettersI > 7)) {
+                        td.innerHTML = numbers[numbersI];
+                    } else if (((lettersI % 2 !== 0) && (numbersI % 2 !== 0)) || ((lettersI % 2 == 0) && (numbersI % 2 == 0))) {
+                        td.classList.add('color-white');	
+                    } else {
+                        td.classList.add('color-gray');
+                    }
+                }
+            }
+        },
+
+    };
+    сhessBoard.playingField();
+
+    /* less 2 */
+    console.log("lesson 2");
+
+    const item = {
+        links() {
+            this.itemEl = document.querySelector('.basket');
+            this.render();
+        },
+        items: [
+            {
+                id_item: 1,
+                name_item: "Товар 1",
+                price_item: 1000,
+            },
+            {
+                id_item: 2,
+                name_item: "Товар 2",
+                price_item: 2000,
+            }
+        ],
+        itemRender(item) {
+            return `                
+                <div class="items">
+                    <p>Название: ${item.name_item}</p>  
+                    <p>Цена: ${item.price_item}</p>
+                </div>
+            `;
+        },
+        priceBasket() {
+            return this.items.reduce(
+                (sum, elem) => sum + elem.price_item, 0
+            );
+        },
+        render() {
+            if (this.items.length) {
+                this.items.forEach(item => {
+                    this.itemEl.insertAdjacentHTML('beforeend', this.itemRender(item));
+                });
+                this.itemEl.insertAdjacentHTML ('beforeend', `В корзине ${this.items.length}`);
+                this.itemEl.insertAdjacentHTML ('beforeend', ` товара(ов) на сумму: ${this.priceBasket()} руб.`);
+            } else {
+                this.itemEl.insertAdjacentHTML ('beforeend', `Корзина пуста`);
+            }
+        },
+    }
+    
+    item.links();
+}
