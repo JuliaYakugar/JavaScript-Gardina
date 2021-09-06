@@ -324,3 +324,102 @@ function lesson5() {
     
     item.links();
 }
+
+function lesson6() {
+    /* less 1 */
+    // объект каталога и объект корзины, в каталоге метод на кнопке"добавить в корзину", в корзине метод - если есть такой товар - добавить кол-во, если нет - добавить в корзину и рендером обновить
+    const Catalog = { // товары в каталоге
+        links(classCatalog, Basket) {
+            this.classCatalog = document.querySelector(classCatalog);
+            this.renderCatalog();
+            this.basket = Basket;
+            
+            this.buttonAdd();
+        },
+
+        itemsCatalog: [
+            {
+                id_item: 1,
+                name_item: "Товар 1",
+                price_item: 1000,
+            },
+            {
+                id_item: 2,
+                name_item: "Товар 2",
+                price_item: 2000,
+            }
+        ],
+
+        renderCatalog() {
+            this.classCatalog.insertAdjacentHTML('beforeend', `<p>Каталог</p>`);
+            this.itemsCatalog.forEach(item => {
+                this.classCatalog.insertAdjacentHTML('beforeend', this.renderCatalogItem(item));
+            });
+        },
+        renderCatalogItem(item) {
+            return `                
+                <div class="catalog_item">
+                    <p>Название: ${item.name_item}</p>  
+                    <p>Цена: ${item.price_item}</p>
+                    <button class="addItemBasket"  data-id_item_button="${item.id_item}">Добавить в корзину</button>
+                </div>
+            `;
+        },
+
+        buttonAdd() {
+            this.classCatalog.addEventListener('click', event => this.addTobasket(event));
+        },
+
+        addTobasket(event) {
+            if (!event.target.classList.contains('addItemBasket')) return;
+            const id_itemNew = +event.target.dataset.id_item_button;
+            const itemAdd = this.itemsCatalog.find((item) => item.id_item === id_itemNew);
+            this.basket.addBasket(itemAdd);
+        }
+    }
+        
+        
+    const Basket = {
+        links(classBasket) {
+            this.classBasket = document.querySelector(classBasket);
+            this.renderBasket();
+        },
+
+        itemsBasket: [
+
+        ],
+
+        renderBasket() {
+            this.classBasket.innerHTML = '';
+            this.classBasket.insertAdjacentHTML('beforeend', `<p>Корзина</p>`);
+            this.itemsBasket.forEach(item => {
+                this.classBasket.insertAdjacentHTML('beforeend', this.renderBasketItem(item));
+            });
+        },
+        renderBasketItem(item) {
+            return `                
+                <div class="basket_item">
+                    <p>Название: ${item.name_item}</p>  
+                    <p>Цена: ${item.price_item}</p>
+                    <p>Количество: ${item.quantity}</p>
+                </div>
+            `;
+        },
+
+        addBasket(itemBasket) {
+            if (itemBasket) {
+                const newItemBasket = this.itemsBasket.find((item) => itemBasket.id_item === item.id_item);
+                if (newItemBasket) {
+                    newItemBasket.quantity++;
+                } else {
+                    this.itemsBasket.push({...itemBasket, quantity: 1});
+                    console.log(this.itemsBasket);
+                }
+                this.renderBasket();
+            }
+        }
+    }
+
+    Catalog.links('.catalog', Basket);
+    Basket.links('.basket6');
+}
