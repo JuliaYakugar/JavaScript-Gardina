@@ -1,4 +1,5 @@
-td {
+/* less 5 */
+#chess td {
     width: 30px;
     height: 30px;
     border: 1px solid rgb(95, 95, 95);
@@ -7,10 +8,60 @@ td {
     
 }
 
-.color-white {
+#chess .color-white {
     background-color: rgb(255, 255, 255);
 }
 
-.color-gray {
+#chess .color-gray {
     background-color: rgb(95, 95, 95);
+}
+
+/* less 7 */
+.disp-none {
+    display: none!important;
+}
+.menuButton{
+    width: 150px;
+    padding: 15px;
+    margin: 10px;
+    color: white;
+    background: #007b32;
+    text-align: center;
+    cursor: pointer;
+}
+.menuButton:hover{
+    background: #009641;
+}
+#game{
+    border-collapse: collapse;
+    margin: 2% auto 0;
+    background-color: rgb(41, 41, 41);
+}
+#menu{
+    display: flex;
+    justify-content: center;
+}
+td.cell{
+    width: 20px;
+    height: 20px;
+    border: 1px dotted #eee;
+    border-collapse: collapse;
+}
+.food{
+    background: #00d021;
+}
+.obstacle{
+    background: #31a4d1;
+}
+.snakeBody{
+    background: #e5e5e5;
+}
+.snakeHead{
+    background: #9b0013;
+}
+.disabled {
+    background: #7c7c7c;
+}
+.disabled:hover{
+    background: #7c7c7c;
 }
